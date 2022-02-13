@@ -1,12 +1,30 @@
+import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import smoothscroll from 'smoothscroll-polyfill';
 import App from './App';
+import './index.css';
+import { setLocale } from './modules/intl/redux/intlReducer';
+import configureStore, { history } from './redux/configureStore';
 import reportWebVitals from './reportWebVitals';
+
+smoothscroll.polyfill();
+
+const { store, persistor } = configureStore({});
+
+store.dispatch(setLocale('vi'));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
