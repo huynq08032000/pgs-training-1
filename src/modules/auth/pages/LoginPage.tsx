@@ -12,6 +12,9 @@ import { RESPONSE_STATUS_SUCCESS } from '../../../utils/httpResponseCode';
 import { replace } from 'connected-react-router';
 import { ROUTES } from '../../../configs/routes';
 import { getErrorMessageResponse } from '../../../utils';
+import { setUserInfo } from '../redux/authReducer';
+import Cookies from 'js-cookie';
+import { ACCESS_TOKEN_KEY } from '../../../utils/constants';
 
 const LoginPage = () =>{
     const dispatch = useDispatch<ThunkDispatch<AppState, null, Action<string>>>();
@@ -27,6 +30,8 @@ const LoginPage = () =>{
             setLoading(false);
             console.log(json?.code)
             if(json?.code === RESPONSE_STATUS_SUCCESS){
+                dispatch(setUserInfo(json.data));
+                Cookies.set(ACCESS_TOKEN_KEY, json.data.token, {expires : values.rememberMe? 7 : undefined})
                 dispatch(replace(ROUTES.contact));
                 return;
             }

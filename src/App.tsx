@@ -14,6 +14,26 @@ import { setUserInfo } from './modules/auth/redux/authReducer';
 
 
 function App() {
+
+  const dispatch = useDispatch<ThunkDispatch<AppState, null, Action<string>>>();
+  const { user } = useSelector((state: AppState) => ({
+    user: state.profile.user,
+  }));
+
+  const getProfile = React.useCallback(async () => {
+    const accessToken = Cookies.get(ACCESS_TOKEN_KEY);
+
+    if (accessToken && !user) {
+      const json = await dispatch(fetchThunk(API_PATHS.userProfile));
+      if (json?.code === RESPONSE_STATUS_SUCCESS) {
+        dispatch(setUserInfo({ ...json.data, token: accessToken }));
+      }
+    }
+  }, [dispatch, user]);
+
+  React.useEffect(() => {
+    getProfile();
+  }, [getProfile]);
   return (
     <>
       <Routes />
