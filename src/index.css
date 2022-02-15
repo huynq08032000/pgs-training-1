@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.content { 
+  width: 100%;
+}
+
+.content .photoInfor { 
+  max-height: 150px;
+  display: flex;
+  border: 2px black solid;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  max-width: px;
+  width: 100%;
+  padding: 10px
+}
+
+.content .photoInfor .photoImg {
+  width: 25%;
+  margin-right: 15px;
+}
+.content .photoInfor .photoContent {
+  width: 55%;
+}
+.photoInfor .photoImg img {
+  height: 100%;
+  border-radius: 50%;
+}

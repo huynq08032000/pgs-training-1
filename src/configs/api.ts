@@ -1,3 +1,4 @@
+import { get } from 'https';
 import { APIHost } from '../utils/constants';
 
 enum APIService {
@@ -24,4 +25,5 @@ export const API_PATHS = {
   userProfile: `${getBaseUrl(APIService.public)}/user`,
   getLocation: `${getBaseUrl(APIService.public)}/location`,
   getState: `${getBaseUrl(APIService.public)}/location?pid=`,
+  getPhoto : `${getBaseUrl(APIService.public)}/photos`,
 };

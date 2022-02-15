@@ -2,7 +2,8 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const router = {
-  '/api': 'http://api.training.div3.pgtest.co/api/v1',
+  '/api' : 'http://api.training.div3.pgtest.co/api/v1',
+  '/apiPhoto': 'https://jsonplaceholder.typicode.com/',
 };
 
 // eslint-disable-next-line no-undef

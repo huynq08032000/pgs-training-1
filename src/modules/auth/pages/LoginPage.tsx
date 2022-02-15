@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../../images/logo-420-x-108.png';
 import LoginForm from '../components/LoginForm';
 import { ILoginParams } from '../../../models/auth';
-import {useDispatch} from 'react-redux' ;
+import {useDispatch, useSelector} from 'react-redux' ;
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '../../../redux/reducer';
 import { Action } from 'typesafe-actions';
@@ -20,6 +20,14 @@ const LoginPage = () =>{
     const dispatch = useDispatch<ThunkDispatch<AppState, null, Action<string>>>();
     const [loading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState('');
+    useEffect(() => {
+        const accessToken = Cookies.get(ACCESS_TOKEN_KEY);
+        if(accessToken){
+            dispatch(replace(ROUTES.home))
+            return;
+        }
+        return;
+    },[])
     const onLogin = React.useCallback(
         async(values : ILoginParams)=>{
             setErrorMessage('');
@@ -28,11 +36,10 @@ const LoginPage = () =>{
                 fetchThunk(API_PATHS.signIn,'post',{email:values.email , password : values.password}),
             );
             setLoading(false);
-            console.log(json?.code)
             if(json?.code === RESPONSE_STATUS_SUCCESS){
                 dispatch(setUserInfo(json.data));
                 Cookies.set(ACCESS_TOKEN_KEY, json.data.token, {expires : values.rememberMe? 7 : undefined})
-                dispatch(replace(ROUTES.contact));
+                dispatch(replace(ROUTES.home));
                 return;
             }
             setErrorMessage(getErrorMessageResponse(json));

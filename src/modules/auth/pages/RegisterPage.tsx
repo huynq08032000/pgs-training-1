@@ -23,7 +23,7 @@ const RegisterPage = () => {
         setLoading(true);
         const json = await dispatch(fetchThunk(API_PATHS.getLocation,'get'))
         setLoading(false)
-
+            
         if(json?.code == RESPONSE_STATUS_SUCCESS){
             setLocations(json.data)
             return;

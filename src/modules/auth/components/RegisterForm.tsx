@@ -12,7 +12,7 @@ interface Props{
     onRegister (value : IRegisterParams) : void;
     loading : boolean;
     errorMessage : string;
-    locations : Array<ILocationParams>;
+    locations : ILocationParams[];
 }
 
 const RegisterForm = (props : Props) => {    
