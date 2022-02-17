@@ -7,6 +7,7 @@ const HomePage = lazy(() => import('./modules/home/pages/HomePage'));
 const ContactPage = lazy(() => import('./modules/home/pages/ContactPage'));
 const LoginPage = lazy(() => import('./modules/auth/pages/LoginPage'));
 const RegisterPage = lazy(() => import('./modules/auth/pages/RegisterPage'));
+const UserDetailPage = lazy(() => import('./modules/auth/pages/UserDetailPage'))
 
 interface Props {}
 
@@ -20,6 +21,7 @@ export const Routes = (props: Props) => {
         <ProtectedRoute path={ROUTES.home} component={HomePage} />
         <Route path={ROUTES.contact} component={ContactPage} />
         <Route path={ROUTES.register} component={RegisterPage}/>
+        <Route path={ROUTES.userdetail} component={UserDetailPage}/>
         <Route path="/" component={LoginPage} />
       </Switch>
     </Suspense>

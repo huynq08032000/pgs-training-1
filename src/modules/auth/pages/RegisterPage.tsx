@@ -12,6 +12,8 @@ import { IRegisterParams } from "../../../models/auth";
 import { replace } from "connected-react-router";
 import { ROUTES } from "../../../configs/routes";
 import { getErrorMessageResponse } from "../../../utils";
+import Cookies from "js-cookie";
+import { ACCESS_TOKEN_KEY } from "../../../utils/constants";
 
 const RegisterPage = () => {
     const dispatch = useDispatch<ThunkDispatch<AppState, null, Action<string>>>();
@@ -19,6 +21,15 @@ const RegisterPage = () => {
     const [errorMessage, setErrorMessage] = React.useState('');
     const [locations, setLocations] = React.useState([]);
     
+    useEffect(() => {
+        const accessToken = Cookies.get(ACCESS_TOKEN_KEY);
+        if(accessToken){
+            dispatch(replace(ROUTES.home))
+            return
+        }
+        dispatch(replace(ROUTES.register))
+        return;
+    },[dispatch])
     const getLocation = React.useCallback(async () => {
         setLoading(true);
         const json = await dispatch(fetchThunk(API_PATHS.getLocation,'get'))

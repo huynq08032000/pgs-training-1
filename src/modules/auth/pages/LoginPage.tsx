@@ -24,10 +24,11 @@ const LoginPage = () =>{
         const accessToken = Cookies.get(ACCESS_TOKEN_KEY);
         if(accessToken){
             dispatch(replace(ROUTES.home))
-            return;
+            return
         }
+        dispatch(replace(ROUTES.login))
         return;
-    },[])
+    },[dispatch])
     const onLogin = React.useCallback(
         async(values : ILoginParams)=>{
             setErrorMessage('');
@@ -39,6 +40,8 @@ const LoginPage = () =>{
             if(json?.code === RESPONSE_STATUS_SUCCESS){
                 dispatch(setUserInfo(json.data));
                 Cookies.set(ACCESS_TOKEN_KEY, json.data.token, {expires : values.rememberMe? 7 : undefined})
+                console.log('Goi den trang home');
+                
                 dispatch(replace(ROUTES.home));
                 return;
             }

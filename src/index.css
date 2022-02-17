@@ -38,3 +38,19 @@ code {
   height: 100%;
   border-radius: 50%;
 }
+
+.nav-right a { 
+  padding: 0 10px;
+}
+
+.nav-left {
+  display: flex;
+}
+
+.nav-left div { 
+  padding: 0 10px;
+}
+
+.nav-left div:hover { 
+  cursor: pointer;
+}

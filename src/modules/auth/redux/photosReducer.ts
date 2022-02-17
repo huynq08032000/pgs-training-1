@@ -3,7 +3,7 @@ import { IPhoto } from "../../../models/photo";
 
 export interface PhotosState {
     photo? : IPhoto;
-    photos? : IPhoto[];
+    photos? : Array<IPhoto>;
 }
 export const setPhoto = createCustomAction('home/setPhoto',(data: IPhoto) => ({
     data,
