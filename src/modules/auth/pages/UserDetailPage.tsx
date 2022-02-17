@@ -14,14 +14,13 @@ const UserDetailPage = () => {
         userFromState: state.profile.user,
     }));
     useEffect(()=>{
-        if (!userFromState){
-            dispatch(replace(ROUTES.login))
+        if(!userFromState?.id){
+            dispatch(replace(ROUTES.home))
             return;
         }
-        return;
-    },[])
-
-    return ( 
+    },[dispatch])
+    
+    return( 
         <div>
             <Header/>
             <UserDetail/>
