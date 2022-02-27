@@ -24,6 +24,7 @@ const Header = () => {
             <div className="nav-right" >
                 <a href="/home" style={{color : '#fff'}}>Home</a>
                 <a href="/contact" style={{color : '#fff'}}>Contact</a>
+                <a href="/datatable" style={{color : '#fff'}}>DataTable</a>
             </div>
             <div className="nav-left">
                 <div className='user-profile'>
