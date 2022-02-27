@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import { Action } from "typesafe-actions";
+import { AppState } from "../../../redux/reducer";
+import { LIST_PAYROLL } from "../../../utils/constants";
 import Header from "../../auth/components/Header";
+import { setPayroll } from "../../intl/redux/dataReducer";
 import DataTable from "../components/DataTable";
 
 const DataTablePage = () => {
+    const dispatch = useDispatch<ThunkDispatch<AppState, null, Action<string>>>();
+    const getPayroll = useCallback(() => {
+        dispatch(setPayroll(LIST_PAYROLL))
+    }, [dispatch])
+    useEffect(() => {
+        getPayroll();
+    }, [getPayroll])
     return (
         <div style={{
             backgroundColor: '#bbdefb',

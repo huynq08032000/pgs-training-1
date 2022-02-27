@@ -16,8 +16,6 @@ const HomeList = () => {
 
     const [newPhotos, setNewPhotos] = React.useState<PhotosState>()    
     React.useEffect(()=>{
-        console.log('goi vao day');
-        
         setNewPhotos(photos);
         setCallBack(false)
     },[callback])

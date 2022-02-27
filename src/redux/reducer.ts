@@ -3,6 +3,7 @@ import { History } from 'history';
 import { combineReducers } from 'redux';
 import authReducer, { AuthState } from '../modules/auth/redux/authReducer';
 import photosReducer, { PhotosState } from '../modules/auth/redux/photosReducer';
+import dataReducer, { DataState } from '../modules/intl/redux/dataReducer';
 import intlReducer, { IntlState } from '../modules/intl/redux/intlReducer';
 
 export interface AppState {
@@ -10,6 +11,7 @@ export interface AppState {
   intl: IntlState;
   profile: AuthState;
   photos : PhotosState;
+  data: DataState;
 }
 
 export default function createRootReducer(history: History) {
@@ -18,5 +20,6 @@ export default function createRootReducer(history: History) {
     intl: intlReducer,
     profile: authReducer,
     photos : photosReducer,
+    data : dataReducer,
   });
 }

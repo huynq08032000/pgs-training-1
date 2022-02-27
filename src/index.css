@@ -97,6 +97,30 @@ tbody tr {
   border-radius: 10px;
   margin-top: 10px;
 }
+.payroll-content-header {
+  width: 100%;
+}
+.payroll-content-body{
+  margin-top: 10px;
+  align-items: center;
+  padding: 10px 0;
+  
+}
+.payroll-content-header > * , .result-payroll > *{
+  min-width: 150px;
+  text-transform: uppercase;
+  padding-left: 10px;
+}
+
+.result-payroll{
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: #fff;
+  font-weight: 500;
+}
 .btn-view-detail {
   background-color: #fff;
   border: 1px blue solid;
@@ -111,4 +135,20 @@ tbody tr {
   padding: 10px;
   border-radius: 10px;
   color: red;
+}
+
+.btn-view-detail:hover,.btn-apply:hover {
+  color: #fff;
+  background-color: #0b5ed7;
+}
+
+.btn-del:hover,.btn-clear:hover{
+  background-color: red;
+  color: #fff;
+}
+
+.payroll-id {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

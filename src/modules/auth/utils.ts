@@ -1,4 +1,5 @@
 import { ILoginParams, ILoginValidation, IRegisterParams } from "../../models/auth";
+import { IPayrollDetail } from "../../models/data";
 import { validEmailRegex } from "../../utils";
 
 const validateEmail = (email : string) => {
@@ -70,4 +71,60 @@ export const validRegister = (value:IRegisterParams) => {
     return !value.email && !value.password && !value.repeatPassword && !value.name 
             && !value.gender && !value.region && !value.state;
 } 
-
+export const getStatus = (payrollDetail: IPayrollDetail) => {
+    let status = "";
+    if(payrollDetail.time_created){
+        status = "Pending"
+    }
+    if(payrollDetail.date_received){
+        status = "Received"
+        if(payrollDetail.date_matched){
+            status = "Matched"
+        }
+    }
+    if(payrollDetail.date_confirmed){
+        status = "Processing"
+        if (payrollDetail.fulfilled){
+            status = "Fulfilled"
+            if (payrollDetail.canceled){
+                status = "Canceled"
+            }
+        }
+    }
+    return status;
+}
+export const getColor = (payrollDetail: IPayrollDetail) => {
+    const status = getStatus(payrollDetail);
+    let color = "black"
+    switch (status) {
+        case "Received":
+            color = "blue"
+            break;
+        case "Canceled":
+            color = "red"
+            break; 
+        case "Fulfilled":
+            color = "blue"
+            break; 
+        case "Pending":
+            color = "purple"
+            break; 
+        case "Processing":
+            color = "orange"
+            break;
+        case "Matched":
+            color = "green"
+            break;
+        default:
+            break;
+    }
+    return color
+}
+export const getTotalPage = (total : any, itemPerPage : number) =>{
+    if (total % itemPerPage != 0){
+        return total / itemPerPage +1
+    }
+    if (total / itemPerPage == 0){
+        return 1;
+    }
+}
