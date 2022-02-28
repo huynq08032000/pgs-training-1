@@ -83,19 +83,19 @@ const DataTable = (props: Props) => {
         }
     }, [page, sortIcon, arrPayroll])
     const renderStatus = () => {
-        const arrGender: JSX.Element[] = [
+        const statusGender: JSX.Element[] = [
             <option disabled selected value='' key=''>
                 {'Trạng thái'}
             </option>
         ]
         STATUS.map((s: IStatus, index: number) => {
-            arrGender.push(
+            statusGender.push(
                 <option value={s.value} key={index}>
                     {s.label}
                 </option>
             )
         })
-        return arrGender;
+        return statusGender;
     }
     const renderPayrollList = () => {
 
@@ -260,9 +260,9 @@ const DataTable = (props: Props) => {
                     Show {item * (page - 1) + 1} to {item * page} in {arrPayroll?.length} records
                 </div>
                 <div className="pagging" style={{ display: 'flex', justifyContent: 'space-around' }}>
-                    <div style={{ margin: '0 10px' }}><button onClick={handlePageBack}><FontAwesomeIcon icon={faAngleLeft} /></button></div>
+                    <div style={{ margin: '0 10px' }}>{page!==1 && <button onClick={handlePageBack}><FontAwesomeIcon icon={faAngleLeft} /></button>}</div>
                     <div style={{ padding: '10px 10px', margin: '0 10px', fontWeight: '500' }}>{page}</div>
-                    <div style={{ margin: '0 10px' }}><button onClick={handlePageNext}><FontAwesomeIcon icon={faAngleRight} /></button></div>
+                    <div style={{ margin: '0 10px' }}>{page!==totalPage && <button onClick={handlePageNext}><FontAwesomeIcon icon={faAngleRight} /></button>}</div>
                 </div>
             </div>
         </div>
