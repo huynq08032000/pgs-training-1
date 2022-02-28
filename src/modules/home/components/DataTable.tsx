@@ -77,7 +77,7 @@ const DataTable = (props: Props) => {
     }, [sortIcon])
     React.useEffect(() => {
         getArrPayrollClone(page, item)
-        let a: any = payroll?.payrolls.length
+        let a: any = arrPayroll?.length
         if (typeof (a) == "number") {
             setTotalPage(getTotalPage(a, item))
         }

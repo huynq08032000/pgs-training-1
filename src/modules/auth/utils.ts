@@ -94,7 +94,7 @@ export const getStatus = (payrollDetail: IPayrollDetail) => {
     return status;
 }
 export const getTotal = (payrollDetail : IPayrollDetail) => {
-    return payrollDetail.volume_input_in_input_currency + payrollDetail.fees
+    return Math.round((payrollDetail.volume_input_in_input_currency + payrollDetail.fees)*1000)/1000
 }
 export const getColor = (payrollDetail: IPayrollDetail) => {
     const status = getStatus(payrollDetail);
