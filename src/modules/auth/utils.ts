@@ -93,6 +93,9 @@ export const getStatus = (payrollDetail: IPayrollDetail) => {
     }
     return status;
 }
+export const getTotal = (payrollDetail : IPayrollDetail) => {
+    return payrollDetail.volume_input_in_input_currency + payrollDetail.fees
+}
 export const getColor = (payrollDetail: IPayrollDetail) => {
     const status = getStatus(payrollDetail);
     let color = "black"
@@ -120,11 +123,12 @@ export const getColor = (payrollDetail: IPayrollDetail) => {
     }
     return color
 }
-export const getTotalPage = (total : any, itemPerPage : number) =>{
+export const getTotalPage = (total : number, itemPerPage : number) : any=>{
     if (total % itemPerPage != 0){
-        return total / itemPerPage +1
+        return total / itemPerPage + 1
     }
     if (total / itemPerPage == 0){
         return 1;
     }
+    return total / itemPerPage
 }

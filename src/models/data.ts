@@ -1,3 +1,5 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 export interface IStatus {
     label : string,
     value : string,
@@ -34,4 +36,16 @@ export interface IPayrollDetail{
     subpayroll_ids: Array<string>;
     time_created: string|Date;
     volume_input_in_input_currency: number;
+}
+export interface IFilter {
+    status : string;
+    dateStart : Date;
+    dateEnd : Date;
+    payrollID : string;
+}
+
+export interface ISortIcon {
+    name : string;
+    icon : IconProp;
+    reverse : number;
 }

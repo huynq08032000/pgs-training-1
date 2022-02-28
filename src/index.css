@@ -60,12 +60,12 @@ code {
   /* padding-left: 20px; */
 }
 
-.input-wrapper > * {
+.input-wrapper input, .input-wrapper select {
   padding: 5px 10px;
   padding-left: 20px;
   border-radius: 5px;
   border: #bcbcbc 1px solid;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
 .filter-form{
@@ -100,6 +100,9 @@ tbody tr {
 .payroll-content-header {
   width: 100%;
 }
+.payroll-content-header:hover{
+  cursor: pointer;
+}
 .payroll-content-body{
   margin-top: 10px;
   align-items: center;
@@ -121,7 +124,7 @@ tbody tr {
   background-color: #fff;
   font-weight: 500;
 }
-.btn-view-detail {
+.btn-view-detail, .btn-apply {
   background-color: #fff;
   border: 1px blue solid;
   padding: 10px;
@@ -129,7 +132,7 @@ tbody tr {
   color: blue;
 }
 
-.btn-del {
+.btn-del, .btn-clear {
   background-color: #fff;
   border: 1px red solid;
   padding: 10px;
@@ -137,7 +140,7 @@ tbody tr {
   color: red;
 }
 
-.btn-view-detail:hover,.btn-apply:hover {
+.btn-view-detail:hover, .btn-apply:hover{
   color: #fff;
   background-color: #0b5ed7;
 }
@@ -151,4 +154,13 @@ tbody tr {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.pagging button {
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #0b5ed7;
+  border: 1px #0b5ed7 solid;
 }
